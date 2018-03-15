@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
 from colorama import init, Fore, Style, Back
 import time
-import pygame
 
 init()
 
