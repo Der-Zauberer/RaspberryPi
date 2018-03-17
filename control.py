@@ -123,16 +123,6 @@ def AvoidObstacle():
 	engineOnRight(50)
 	time.sleep(TurnTime)
 	engineOff()
-		
-def AvoidObstacle():
-	print("Backwards")
-	engineOnBackward(60)
-	time.sleep(ReverseTime)
-	engineOff()
-	print("Right")
-	engineOnRight(50)
-	time.sleep(TurnTime)
-	engineOff()
 	
 def hotkeymodehelp():
 	print(Style.NORMAL + Fore.YELLOW + "help        - Open this interface")
@@ -297,6 +287,9 @@ try:
 						if IsNearObstacle(HowNear):
 							engineOff()
 							AvoidObstacle()
+							
+				if(ih == "line"):
+					print("Comming Soon")
 				
 				if(ih == "exit"):
 					automaticmode = False
