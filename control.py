@@ -5,10 +5,7 @@ import time
 init()
 
 loop = True
-<<<<<<< HEAD
 lineloop = True
-=======
->>>>>>> b5a13ca62f85b75887b6b9842b370c6d389d39f4
 hotkeymode = True
 testmode = True
 automaticmode = True
@@ -18,11 +15,7 @@ engine_right_forward = 8
 engine_left_backward = 9
 engine_right_backward = 7
 
-<<<<<<< HEAD
 line_detector = 4
-
-=======
->>>>>>> b5a13ca62f85b75887b6b9842b370c6d389d39f4
 frequency = 50
 stop = 0
 
@@ -92,15 +85,12 @@ def engineOnTimeBackward(speed):
 	engineOnBackward(speed)
 	time.sleep(int(engine_time))
 	engineOff()
-<<<<<<< HEAD
 
 def isBlack():
         if GPIO.input(line_detector)==0:
                 return True
         else:
                 return False
-=======
->>>>>>> b5a13ca62f85b75887b6b9842b370c6d389d39f4
 	
 def Measure():
 	GPIO.output(17, True)
@@ -307,19 +297,14 @@ try:
 							AvoidObstacle()
 							
 				if(ih == "line"):
-<<<<<<< HEAD
-                                        engineOnLeft(50)
-                                        while(lineloop == True):
-                                                if IsNearObstacle(20):
-                                                        engineOff()
-                                                        lineloop = False
-                                                if isBlack():
-                                                        engineOff()
-                                                        lineloop = False
-                                                
-=======
-					print("Comming Soon")
->>>>>>> b5a13ca62f85b75887b6b9842b370c6d389d39f4
+                                    engineOnLeft(50)
+                                    while(lineloop == True):
+                                        if IsNearObstacle(20):
+                                            engineOff()
+                                            lineloop = False
+                                        if isBlack():
+                                            engineOff()
+                                            lineloop = False
 				
 				if(ih == "exit"):
 					automaticmode = False
@@ -327,7 +312,7 @@ try:
 				if(ih == "help"):
 					automaticmodehelp()
 			
-		if(i == "help"):
+                if(i == "help"):
 			help()
 			
 		if(i == "exit"):
@@ -336,12 +321,8 @@ try:
 			
 		hotkeymode = True
 		testmode = True
-		automaticmode = True
+                automaticmode = True
 		
 except KeyboardInterrupt:
 	GPIO.cleanup()
-<<<<<<< HEAD
 	print("")
-=======
-	print("")
->>>>>>> b5a13ca62f85b75887b6b9842b370c6d389d39f4
