@@ -136,7 +136,7 @@ def hotkeymodehelp():
 	print(Style.NORMAL + Fore.YELLOW + "help        - Open this interface")
 	print("-w          - Go forward for 1 second slow")
 	print("w           - Go forward for 1 second")
-	print("ww  	       - Go forward for 2 seconds fast")
+	print("ww  	   - Go forward for 2 seconds fast")
 	print("wwww        - Go forward for 3 seconds very fast")
 	print("a           - Go left for ~45°")
 	print("aa          - Go left for ~90°")
@@ -297,22 +297,22 @@ try:
 							AvoidObstacle()
 							
 				if(ih == "line"):
-                                    engineOnLeft(50)
-                                    while(lineloop == True):
-                                        if IsNearObstacle(20):
-                                            engineOff()
-                                            lineloop = False
-                                        if isBlack():
-                                            engineOff()
-                                            lineloop = False
+					engineOnLeft(50)
+					while(lineloop == True):
+						if IsNearObstacle(20):
+							engineOff()
+							lineloop = False
+						if isBlack():
+							engineOff()
+							lineloop = False
 				
 				if(ih == "exit"):
 					automaticmode = False
 					
 				if(ih == "help"):
 					automaticmodehelp()
-			
-                if(i == "help"):
+		
+		if(i == "help"):
 			help()
 			
 		if(i == "exit"):
@@ -321,7 +321,7 @@ try:
 			
 		hotkeymode = True
 		testmode = True
-                automaticmode = True
+		automaticmode = True
 		
 except KeyboardInterrupt:
 	GPIO.cleanup()
