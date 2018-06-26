@@ -35,6 +35,7 @@ GPIO.setup(engine_right_backward ,GPIO.OUT)
 
 GPIO.setup(17, GPIO.OUT)
 GPIO.setup(18, GPIO.IN)
+GPIO.setup(line_detector, GPIO.IN)
 
 pwm_engine_left_forward = GPIO.PWM(engine_left_forward, frequency)
 pwm_engine_right_forward = GPIO.PWM(engine_right_forward, frequency)
@@ -89,7 +90,7 @@ def engineOnTimeBackward(speed):
 	engineOff()
 
 def isBlack():
-        if GPIO.input(line_detector)==0:
+        if GPIO.input(line_detector)==1:
                 return True
         else:
                 return False
@@ -293,13 +294,15 @@ try:
 							AvoidObstacle()
 							
 				if(ih == "line"):
-					engineOnLeft(50)
+					engineOnForward(50)
 					while(lineloop == True):
 						if IsNearObstacle(20):
+							print("obstacle")
 							engineOff()
 							lineloop = False
 						if isBlack():
 							engineOff()
+							print("white")
 							lineloop = False
 				
 				if(ih == "exit"):
