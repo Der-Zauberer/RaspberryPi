@@ -1,3 +1,5 @@
+#Installation of colorama required
+
 import RPi.GPIO as GPIO
 from colorama import init, Fore, Style, Back
 import time
@@ -156,12 +158,6 @@ def testmodehelp():
 	print("engineOff              - Stopps engines")
 	print("stop                   - Stopps engines")
 	print("exit                   - Leave the testmode")
-	
-def testmodehelp():
-	print(Style.NORMAL + Fore.YELLOW + "help                   - Open this interface")
-	print("engineOff              - Stopps engines")
-	print("stop                   - Stopps engines")
-	print("exit                   - Leave the automaticmode")
 	
 def help():
 	print(Style.NORMAL + Fore.YELLOW + "help                   - Open this interface")
