@@ -295,6 +295,7 @@ try:
 			while automaticmode == True:
 				
 				ih = input(Style.BRIGHT + Fore.YELLOW + "RaspiControl - Automaticmode $ " + Style.RESET_ALL)
+				lineloop = True
 				
 				if(ih == "obstacle"):
 					GPIO.output(17, False)
