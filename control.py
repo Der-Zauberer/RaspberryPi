@@ -1,17 +1,20 @@
 #Installation of colorama required
 
+#Import GPIO, colorama and time
 import RPi.GPIO as GPIO
 from colorama import init, Fore, Style, Back
 import time
 
 init()
 
+#Declarate loops for input
 loop = True
 lineloop = True
 hotkeymode = True
 testmode = True
 automaticmode = True
 
+#Set Pins
 engine_left_forward = 10
 engine_right_forward = 8
 engine_left_backward = 9
@@ -21,10 +24,12 @@ line_detector = 4
 frequency = 50
 stop = 0
 
+#Set sensor Parameters
 HowNear = 30.0
 ReverseTime = 0.6
 TurnTime = 0.75
 
+#Setup GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
@@ -37,6 +42,7 @@ GPIO.setup(17, GPIO.OUT)
 GPIO.setup(18, GPIO.IN)
 GPIO.setup(line_detector, GPIO.IN)
 
+#Declarate 
 pwm_engine_left_forward = GPIO.PWM(engine_left_forward, frequency)
 pwm_engine_right_forward = GPIO.PWM(engine_right_forward, frequency)
 pwm_engine_left_backward = GPIO.PWM(engine_left_backward, frequency)
@@ -46,7 +52,8 @@ pwm_engine_left_forward.start(stop)
 pwm_engine_right_forward.start(stop)
 pwm_engine_left_backward.start(stop)
 pwm_engine_right_backward.start(stop)
-	
+
+#All methods for movement of the robot. Speed is a value between 100 and 0 for difficult speed.
 def engineOff():
 	pwm_engine_left_forward.ChangeDutyCycle(stop)
 	pwm_engine_right_forward.ChangeDutyCycle(stop)
@@ -76,7 +83,8 @@ def engineOnLeft(speed):
 	pwm_engine_right_forward.ChangeDutyCycle(speed)
 	pwm_engine_left_backward.ChangeDutyCycle(speed)
 	pwm_engine_right_backward.ChangeDutyCycle(stop)
-	
+
+#Method for movement with time limit. Speed is a value between 100 and 0 for difficult speed.
 def engineOnTimeForward(speed):
 	engine_time = input(Style.NORMAL + Fore.YELLOW + "Time: ")
 	engineOnForward(speed)
@@ -89,12 +97,14 @@ def engineOnTimeBackward(speed):
 	time.sleep(int(engine_time))
 	engineOff()
 
-def isBlack():
+#Check color of the ground. If the ground is white returns true.
+def isWhite():
         if GPIO.input(line_detector)==1:
                 return True
         else:
                 return False
-	
+
+#Check lenght to next obstacle
 def Measure():
 	GPIO.output(17, True)
 	time.sleep(0.00001)
@@ -116,7 +126,8 @@ def Measure():
 	ElapsedTime = StopTime - StartTime
 	Distance = (ElapsedTime * 34326)/2
 	return Distance
-	
+
+#If a obstacle is near as the input value
 def IsNearObstacle(localHowNear):
 	Distance = Measure()
 	print("IsNearObstacle: "+str(Distance))
@@ -124,7 +135,8 @@ def IsNearObstacle(localHowNear):
 		return True
 	else:
 		return False
-		
+
+#Try to avoid a obstacle by turn back and turn around		
 def AvoidObstacle():
 	print("Backwards")
 	engineOnBackward(60)
@@ -134,7 +146,8 @@ def AvoidObstacle():
 	engineOnRight(50)
 	time.sleep(TurnTime)
 	engineOff()
-	
+
+#A manual to use this commands can be found in the RaspberryPi GitHub Wiki on: https://github.com/Der-Zauberer/RaspberryPi/wiki
 def hotkeymodehelp():
 	print(Style.NORMAL + Fore.YELLOW + "help        - Open this interface")
 	print("-w          - Go forward for 1 second slow")
