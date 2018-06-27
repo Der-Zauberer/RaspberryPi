@@ -313,7 +313,7 @@ try:
 							print("obstacle")
 							engineOff()
 							lineloop = False
-						if isBlack():
+						if isWhite():
 							engineOff()
 							print("white")
 							lineloop = False
