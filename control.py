@@ -147,7 +147,7 @@ def AvoidObstacle():
 	time.sleep(TurnTime)
 	engineOff()
 
-#A manual to use this commands can be found in the RaspberryPi GitHub Wiki on: https://github.com/Der-Zauberer/RaspberryPi/wiki
+#A user manual to use this commands can be found in the RaspberryPi GitHub Wiki on: https://github.com/Der-Zauberer/RaspberryPi/wiki
 def hotkeymodehelp():
 	print(Style.NORMAL + Fore.YELLOW + "help        - Open this interface")
 	print("-w          - Go forward for 1 second slow")
@@ -321,9 +321,6 @@ try:
 				
 				if(ih == "exit"):
 					automaticmode = False
-					
-				if(ih == "help"):
-					automaticmodehelp()
 		
 		if(i == "help"):
 			help()
