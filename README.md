@@ -1,5 +1,5 @@
 # RaspberryPi
-The script is only intended for the raspberry pi. This code needs colorama, to get it type ```pip install colorama``` or ```sudo pip install colorama``` in your linux console.
+The script is only intended for the raspberry pi. The python programm can run a autonomous car with the EduKit. This code needs colorama, to get it type ```pip install colorama``` or ```sudo pip install colorama``` in your linux console.
 
 ## Control
 
